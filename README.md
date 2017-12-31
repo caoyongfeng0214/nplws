@@ -14,6 +14,11 @@ local WS = ws.Server:new({server = server});
 WS:on('connection', function(w)
     w:on('message', function(w, msg)
         print('recevied a message: ', msg);
+        -- send msg to client
+        w:send('Hello from Server');
+        setTimeout(function()
+            w:close(); -- close connection from Server
+        end, 3000);
     end);
     w:on('close', function(w)
         print('websocket closed');
