@@ -17,7 +17,7 @@ WS:on('connection', function(w)
         -- send msg to client
         w:send('Hello from Server');
         setTimeout(function()
-            w:close(); -- close connection from Server
+            w:close(); -- close connection
         end, 3000);
     end);
     w:on('close', function(w)
