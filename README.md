@@ -16,7 +16,7 @@ WS:on('connection', function(w)
         print('recevied a message: ', msg);
     end);
     w:on('close', function(w)
-        print('websocked closed');
+        print('websocket closed');
     end);
 end);
 ```
