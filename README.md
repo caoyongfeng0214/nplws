@@ -11,8 +11,10 @@ local app = express:new();
 local server = app:listen(3000);
 
 local WS = ws.Server:new({server = server});
-WS:on('connection', function(w)
-
+WS:on('connection', function(w, req)
+    -- req is a [ request ] instance
+    -- local authSession = req.session:get('auth');
+    
     w:on('message', function(w, msg)
         print('recevied a message: ', msg);
         
