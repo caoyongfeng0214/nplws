@@ -26,7 +26,7 @@ function ws.Server:new(o)
                     ws.Server.__connection_public_added__ = true;
                     NPL.AddPublicFile(debug.getinfo(1,'S').source:match('^[@%./\\]*(.+[/\\])[^/\\]+$') .. 'connection.lua', -20);
                     
-                    NPL.RegisterEvent(0, "_n_gameserver_network", ";__ws__.Server.connectionEvent();");
+                    NPL.RegisterEvent(0, '_n_gameserver_network', ';__ws__.Server.connectionEvent();');
                 end
                 key = key .. '258EAFA5-E914-47DA-95CA-C5AB0DC85B11';
                 key = NPL.load('sha1')(key, 'base64');

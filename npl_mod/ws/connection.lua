@@ -6,9 +6,20 @@ connection._cnns = {};
 function connection:new(o)
     o = o or {};
     local a = setmetatable(o, { __index = self });
-    connection._cnns[o.nid or o.tid] = a;
+    a.nid = o.nid or o.tid;
+    connection._cnns[a.nid] = a;
     return a;
 end;
+
+
+function connection:close()
+    NPL.reject(self.nid);
+end
+
+
+function connection:send(msg)
+    NPL.activate(string.format('%s:websocket', self.nid), msg);
+end
 
 
 function connection:on(evtName, fn)
